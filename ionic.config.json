@@ -1,0 +1,7 @@
+{
+  "name": "artidari-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
