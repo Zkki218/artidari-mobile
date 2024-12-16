@@ -1,16 +1,16 @@
 <!-- bookmarked.page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Bookmarked</ion-title>
+    <img src="./assets/artidari.png" alt="artidari.icon" style="height: 40px;  margin-top: 10px;">
   </ion-toolbar>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your bookmark"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <h1>Bookmarked</h1>
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your bookmark"></ion-searchbar>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
   <ion-list *ngIf="(bookmarkedIstilah$ | async) as bookmarkedIstilah; else loading">
     <ion-item *ngFor="let istilah of bookmarkedIstilah" lines="full">
       <ion-label>
