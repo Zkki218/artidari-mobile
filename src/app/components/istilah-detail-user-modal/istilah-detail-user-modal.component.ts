@@ -21,13 +21,12 @@ export class IstilahDetailUserModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.istilah = this.istilah;
     const userId = this.istilah!.userId;
     this.firestoreService.getUserName(userId).subscribe((name) => {
       this.userName = name;
     });
     this.date = this.firestoreService.timestampToDate(this.istilah!.updatedAt);
-    this.firestoreService.getUserBookmarks(this.istilah!.userId).subscribe((bookmarks) => {
+    this.firestoreService.getUserBookmarks(userId).subscribe((bookmarks) => {
       this.userBookmarks$.next(bookmarks);
     });
   }
@@ -42,8 +41,8 @@ export class IstilahDetailUserModalComponent implements OnInit {
   
   
     toggleBookmark(istilah: Istilah) {
-      if (this.istilah!.userId) {
-        this.firestoreService.toggleBookmark(istilah.id, this.istilah!.userId).then(() => {
+      if (istilah!.userId) {
+        this.firestoreService.toggleBookmark(istilah!.id, this.istilah!.userId).then(() => {
           // Update the local bookmarks after successful toggle
           this.firestoreService.getUserBookmarks(this.istilah!.userId!).subscribe((bookmarks) => {
             this.userBookmarks$.next(bookmarks);
