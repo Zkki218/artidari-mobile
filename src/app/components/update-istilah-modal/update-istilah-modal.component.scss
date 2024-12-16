@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+ion-header {
+    ion-toolbar {
+        --background: #1b274b; // Warna biru tua untuk header
+        --color: #ffffff; // Warna teks putih
+        text-align: left;
+        font-weight: bold;
+        font-family: "Work Sans", sans-serif;
+        height: 60px;
+    }
+}
+
+ion-content {
+    background-color: #f9f9f9; // Warna latar belakang konten
+    font-family: "Work Sans", sans-serif;
+
+    ion-item {
+        // padding-left: 1rem;
+        // padding-right: 1rem;
+        // padding-bottom: 1rem;
+        // margin-bottom: 1rem;
+        border-radius: 8px; // Membuat sudut input lebih membulat
+        --background: #ffffff; // Latar belakang input
+        --color: #000000;
+        border-color: #333333;
+        border-style: solid;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        ion-label {
+            font-weight: bold;
+            color: #333333;
+        }
+
+        ion-textarea {
+            // --padding-start: 8px;
+            height: auto;
+            width: 300;
+            overflow: scroll;
+        }
+    }
+
+    ion-button {
+        --background: #1b274b; // Warna biru tua untuk tombol
+        --color: #ffffff; // Warna teks tombol
+        border-radius: 8px;
+        font-weight: bold;
+        text-transform: capitalize;
+        width: 200px;
+        height: 45px;
+        font-size: 16px;
+
+        &:disabled {
+            --background: #cccccc; // Warna abu-abu jika tombol disabled
+        }
+
+        ion-icon {
+            margin-right: 8px; // Icon pada tombol submit
+        }
+    }
+
+}
+
+// Style untuk ikon navigasi footer
+ion-footer {
+    ion-tab-bar {
+        --background: #ffffff;
+        border-top: 1px solid #dddddd;
+        font-family: "Work Sans", sans-serif;
+
+        ion-tab-button {
+            color: #8c8c8c;
+
+            &.tab-selected {
+                color: #1b274b; // Warna biru tua jika dipilih
+            }
+        }
+    }
+}
+
+h3 {
+    font-weight: bold;
+    font-size: large;
+    font-family: "Work Sans", sans-serif;
+    color: #1b274b;
+    margin-left: 25px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animation for entering from below */
+@keyframes slideInFromRight {
+    0% {
+        transform: translatex(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Apply animation to the card */
+ion-content {
+    animation: slideInFromRight 0.75s ease-in-out;
+}

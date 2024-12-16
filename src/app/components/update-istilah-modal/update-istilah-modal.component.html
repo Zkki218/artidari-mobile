@@ -7,21 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label position="floating">Judul</ion-label>
-    <ion-input [(ngModel)]="istilah.judul"></ion-input>
-  </ion-item>
+<ion-content class="flex">
+  <div>
+    <h3>Title</h3>
+    <ion-item lines="none">
+      <!-- <ion-label position="floating">Title</ion-label> -->
+      <ion-input [(ngModel)]="istilah.judul"></ion-input>
+    </ion-item>
+  </div>
 
-  <ion-item>
-    <ion-label position="floating">Deskripsi</ion-label>
-    <ion-textarea [(ngModel)]="istilah.deskripsi"></ion-textarea>
-  </ion-item>
+  <div>
+    <h3>Description</h3>
+    <ion-item lines="none">
+      <!-- <ion-label position="floating">Description</ion-label> -->
+      <ion-textarea [(ngModel)]="istilah.deskripsi"></ion-textarea>
+    </ion-item>
+  </div>
 
-  <ion-item>
-    <ion-label position="floating">Contoh</ion-label>
-    <ion-textarea [(ngModel)]="istilah.contoh"></ion-textarea>
-  </ion-item>
-
-  <ion-button expand="block" (click)="updateIstilah()">Update</ion-button>
+  <div>
+    <h3>Example of Use</h3>
+    <ion-item lines="none">
+      <!-- <ion-label position="floating">Contoh</ion-label> -->
+      <ion-textarea [(ngModel)]="istilah.contoh"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class="submit">
+    <ion-button type="submit" expand="block" (click)="updateIstilah()">Update</ion-button>
+  </div>
 </ion-content>
