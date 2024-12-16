@@ -14,8 +14,12 @@
     <ion-card *ngFor="let istilah of istilahList" lines="full">
       <ion-card-header>
         <ion-card-title>
-          <h1>{{ istilah?.judul }}</h1>
+          <h1>{{ istilah?.judul }}</h1> <ion-button (click)="toggleBookmark(istilah)" >
+            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+          </ion-button>
+          
         </ion-card-title>
+        
       </ion-card-header>
       <ion-card-content class="name">
         <p>{{ istilah!.deskripsi }}</p><br />
@@ -26,10 +30,6 @@
   
         <ion-button (click)="dislike(istilah)">
           <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah.dislike }}
-        </ion-button>
-  
-         <ion-button (click)="toggleBookmark(istilah)" >
-          <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
         </ion-button>
   
         <ion-button (click)="openReportModal(istilah.id)">Report</ion-button>
