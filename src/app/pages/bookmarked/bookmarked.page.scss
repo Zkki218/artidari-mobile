@@ -11,7 +11,7 @@ ion-header {
 }
 
 ion-content {
-  background-color: #f9f9f9; // Warna latar belakang konten
+  background-color: #ffffff; // Warna latar belakang konten
   font-family: "Work Sans", sans-serif;
 
   form {
@@ -94,4 +94,9 @@ h1 {
   text-align: center;
   margin-top: 30px;
   font-family: "Work Sans", sans-serif;
+}
+
+ion-searchbar {
+  --background: #ffffff;
+  --color: #1b274b;
 }
