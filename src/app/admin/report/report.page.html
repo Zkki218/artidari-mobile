@@ -1,16 +1,16 @@
-// report.page.html
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Reports</ion-title>
+    <img src="./assets/artidari.png" alt="artidari.icon" style="height: 40px;  margin-top: 10px;">
   </ion-toolbar>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search"></ion-searchbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<h1>Report</h1>
+
+<ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search"></ion-searchbar>
 
   <ion-list *ngIf="(reports$ | async) as reports; else loading">
     <ion-item-sliding *ngFor="let report of reports">

@@ -1,14 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Dashboard</ion-title>
+    <img src="./assets/artidari.png" alt="artidari.icon" style="height: 40px;  margin-top: 10px;">
   </ion-toolbar>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Type some word or phrase"></ion-searchbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<h1>Dashboard</h1>
+
+<ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Type some word or phrase"></ion-searchbar>
 
   <ion-list *ngIf="(istilahList$ | async) as istilahList; else loading">
     <ion-item-sliding *ngFor="let istilah of istilahList">
