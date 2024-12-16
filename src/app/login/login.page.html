@@ -5,40 +5,67 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form (ngSubmit)="login()" [formGroup]="credentials">
-    <ion-item fill="solid" class="ion-margin-bottom">
-      <ion-input
-        type="email"
-        placeholder="Email"
-        formControlName="email"
-      ></ion-input>
-      <ion-note
-        slot="error"
-        *ngIf="(email?.dirty || email?.touched) && email?.errors"
-        >Email is invalid</ion-note
-      >
-    </ion-item>
-    <ion-item fill="solid" class="ion-margin-bottom">
-      <ion-input
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-      ></ion-input>
-      <ion-note
-        slot="error"
-        *ngIf="(password?.dirty || password?.touched) && password?.errors"
-        >Password needs to be 6 characters</ion-note
-      >
-    </ion-item>
-
-    <ion-button type="submit" expand="block" [disabled]="!credentials.valid"
-      >Log in</ion-button
-    >
-  </form>
-  <ion-button (click)="goToRegister()" fill="clear" expand="block" >Don't Have an Account? Click Here!</ion-button>
-  <br /><ion-text><p style="text-align: center;">Or</p></ion-text><br />
-  <ion-button expand="block" (click)="googleLogin()">
-    <ion-icon slot="start" name="logo-google"></ion-icon>
-    <ion-text>Login with Google</ion-text>
-  </ion-button>
+  <div class="main">
+    <div class="form">
+      <h1>Login</h1>
+      <form (ngSubmit)="login()" [formGroup]="credentials">
+        <ion-item>
+          <ion-input labelPlacement="stacked" label="Email" placeholder="Email" formControlName="email">
+            <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+          </ion-input>
+          <ion-note
+            slot="error"
+            *ngIf="(email?.dirty || email?.touched) && email?.errors"
+            >Email is invalid</ion-note
+          >
+        </ion-item>
+        <!-- <ion-label>Email</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <ion-input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+          ></ion-input>
+          <ion-note
+            slot="error"
+            *ngIf="(email?.dirty || email?.touched) && email?.errors"
+            >Email is invalid</ion-note
+          >
+        </ion-item> -->
+        <ion-item>
+          <ion-input labelPlacement="stacked" label="Password" placeholder="Password" formControlName="password">
+            <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+          </ion-input>
+          <ion-note
+            slot="error"
+            *ngIf="(password?.dirty || password?.touched) && password?.errors"
+            >Password needs to be 6 characters</ion-note
+          >
+        </ion-item>
+        <!-- <ion-label>Password</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <ion-input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          ></ion-input>
+          <ion-note
+            slot="error"
+            *ngIf="(password?.dirty || password?.touched) && password?.errors"
+            >Password needs to be 6 characters</ion-note
+          >
+        </ion-item> -->
+    
+        <ion-button type="submit" expand="block" [disabled]="!credentials.valid"
+          >Log in</ion-button
+        >
+      </form>
+      <br /><ion-text><p style="text-align: center;">Or</p></ion-text><br />
+      <ion-button expand="block" (click)="googleLogin()">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        <ion-text>Login with Google</ion-text>
+      </ion-button>
+      <ion-button (click)="goToRegister()" fill="clear" expand="block" >Don't Have an Account? Click Here!</ion-button>
+    </div>
+  </div>
 </ion-content>
