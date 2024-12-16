@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Bookmark, FirestoreService, Istilah } from 'src/app/services/firestore.service';
 import { ReportModalComponent } from '../report-modal/report-modal.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-istilah-detail-user-modal',
@@ -13,10 +14,12 @@ export class IstilahDetailUserModalComponent implements OnInit {
   @Input() istilah: Istilah | undefined; // Receive the istilah data
   userName: string | null = null;
   date: Date | null = null;
+  currentUserId = this.authService.getCurrentUserId();
   userBookmarks$: BehaviorSubject<Bookmark[]> = new BehaviorSubject<Bookmark[]>([]);
 
   constructor(
     private firestoreService: FirestoreService,
+    private authService: AuthService,
     private modalController: ModalController
   ) {}
 
@@ -26,7 +29,7 @@ export class IstilahDetailUserModalComponent implements OnInit {
       this.userName = name;
     });
     this.date = this.firestoreService.timestampToDate(this.istilah!.updatedAt);
-    this.firestoreService.getUserBookmarks(userId).subscribe((bookmarks) => {
+    this.firestoreService.getUserBookmarks(this.currentUserId!).subscribe((bookmarks) => {
       this.userBookmarks$.next(bookmarks);
     });
   }
@@ -42,9 +45,10 @@ export class IstilahDetailUserModalComponent implements OnInit {
   
     toggleBookmark(istilah: Istilah) {
       if (istilah!.userId) {
-        this.firestoreService.toggleBookmark(istilah!.id, this.istilah!.userId).then(() => {
+        this.firestoreService.toggleBookmark(istilah!.id, this.currentUserId!).then(() => {
+          console.log('Istilah ID:', istilah!.id, 'User ID:', this.currentUserId);
           // Update the local bookmarks after successful toggle
-          this.firestoreService.getUserBookmarks(this.istilah!.userId!).subscribe((bookmarks) => {
+          this.firestoreService.getUserBookmarks(this.currentUserId!).subscribe((bookmarks) => {
             this.userBookmarks$.next(bookmarks);
           });
         });
@@ -55,7 +59,7 @@ export class IstilahDetailUserModalComponent implements OnInit {
   
     like(istilah: Istilah) {
       if(this.istilah!.userId) {
-        this.firestoreService.likeIstilah(istilah.id, this.istilah!.userId);
+        this.firestoreService.likeIstilah(istilah.id, this.currentUserId!);
   
       } else {
         console.log("User not logged in");
@@ -65,7 +69,7 @@ export class IstilahDetailUserModalComponent implements OnInit {
   
     dislike(istilah: Istilah) {
       if(this.istilah!.userId) {
-        this.firestoreService.dislikeIstilah(istilah.id, this.istilah!.userId);
+        this.firestoreService.dislikeIstilah(istilah.id, this.currentUserId!);
   
       } else {
         console.log("User not logged in");
