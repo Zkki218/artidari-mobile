@@ -1,23 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Tambah Istilah</ion-title>
+    <img src="./assets/artidari.png" alt="artidari.icon" style="height: 40px;  margin-top: 10px;">
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<h1>Submit</h1>
+<ion-content class="flex">
   <form [formGroup]="istilahForm" (ngSubmit)="submitIstilah()">
-    <ion-item>
-      <ion-label position="floating">Judul</ion-label>
-      <ion-input formControlName="judul" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Deskripsi</ion-label>
-      <ion-textarea formControlName="deskripsi"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Contoh</ion-label>
-      <ion-textarea formControlName="contoh"></ion-textarea>
-    </ion-item>
-    <ion-button type="submit" expand="block" [disabled]="!istilahForm.valid">Submit</ion-button>
+    <div>
+      <h3>Judul</h3>
+      <ion-item>
+        <ion-input formControlName="judul" type="text"></ion-input>
+      </ion-item>
+    </div>
+    <div>
+      <h3>Deskripsi</h3>
+      <ion-item>
+        <ion-textarea formControlName="deskripsi"></ion-textarea>
+      </ion-item>
+    </div>
+    <div>
+      <h3>Contoh Penggunaan</h3>
+      <ion-item>
+        <ion-textarea formControlName="contoh"></ion-textarea>
+      </ion-item>
+    </div>
+    <div class="submit">
+      <ion-button type="submit" expand="block" [disabled]="!istilahForm.valid">
+        <ion-icon name="add-outline" slot="start"></ion-icon>
+        Submit
+      </ion-button>
+    </div>
   </form>
 </ion-content>

@@ -1,49 +1,71 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Profile</ion-title>
+  <ion-toolbar>
+    <img
+      src="./assets/artidari.png"
+      alt="artidari.icon"
+      style="height: 40px; margin-top: 10px"
+    />
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  <ion-card class="profile-card">
+    <ion-card-header class="profile-header">
+      <img
+        [src]="profileImageUrl"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <ion-button (click)="openEditProfileModal()" fill="clear">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-card-header>
 
-  <div class="profile-container">
-    <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
-    <ion-button (click)="openEditProfileModal()" fill="clear">
-      <ion-icon name="create-outline"></ion-icon>
-     </ion-button>
+    <ion-card-content class="profile-info-section">
+      <p class="description">{{ username }}</p>
+      <p class="description2">{{ email }}</p>
+      <p class="description2">{{ (userData$ | async)?.description }}</p>
 
-    <ion-item>
-      <ion-label>Username: {{ username }}</ion-label>
-    </ion-item>
+      <hr />
 
-    <ion-item>
-      <ion-label>Email: {{ email }}</ion-label>
-    </ion-item>
-
-    <ion-item class="description">
-      <ion-label>Description: {{ (userData$ | async)?.description }}</ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Total Istilah: {{ istilahCount }}</ion-label>
-    </ion-item>
-
-    <ion-button expand="block" color="danger" (click)="logout()">Logout</ion-button>
-  </div>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your word"></ion-searchbar>
+      <p class="description2">Post Count</p>
+      <div class="flex-container">
+        <div class="center-element">
+          <p class="description3">{{ istilahCount }}</p>
+        </div>
+        <div class="right-element">
+          <ion-button fill="clear" color="danger" (click)="logout()">
+            <ion-icon class="logout" name="log-out-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
   <div>
-
+    <ion-searchbar
+      (ionChange)="onSearch($event)"
+      animated
+      placeholder="Search your word"
+    ></ion-searchbar>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-list *ngIf="(istilahList$ | async) as istilahList; else loading">
-      <ion-item *ngFor="let istilah of istilahList" lines="full" (click)="openIstilahModal(istilah)">
-        <ion-label>
-          <h2>{{ istilah.judul }}</h2>
-          <p>{{ istilah.deskripsi }}</p>
-        </ion-label>
-      </ion-item>
+      <ion-card *ngFor="let istilah of istilahList" lines="full">
+        <ion-card-header>
+          <ion-card-title>
+            <h1 (click)="openIstilahModal(istilah)">{{ istilah?.judul }}</h1>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="name">
+          <p (click)="openIstilahModal(istilah)">Tap to see istilah</p>
+
+          <ion-icon class="like" name="thumbs-up"></ion-icon> {{ istilah.like }}
+
+          <ion-icon class="dislike" name="thumbs-down"></ion-icon> {{ istilah.dislike }}
+        </ion-card-content>
+      </ion-card>
     </ion-list>
   </div>
 
