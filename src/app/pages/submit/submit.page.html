@@ -9,19 +9,19 @@
   <form [formGroup]="istilahForm" (ngSubmit)="submitIstilah()">
     <div>
       <h3>Title</h3>
-      <ion-item>
+      <ion-item lines="none">
         <ion-input formControlName="judul" type="text"></ion-input>
       </ion-item>
     </div>
     <div>
       <h3>Description</h3>
-      <ion-item>
+      <ion-item lines="none">
         <ion-textarea formControlName="deskripsi"></ion-textarea>
       </ion-item>
     </div>
     <div>
       <h3>Example of Use</h3>
-      <ion-item>
+      <ion-item lines="none">
         <ion-textarea formControlName="contoh"></ion-textarea>
       </ion-item>
     </div>

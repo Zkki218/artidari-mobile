@@ -22,9 +22,11 @@ ion-content {
 
     ion-item {
       margin-bottom: 1rem;
-      --border-radius: 8px; // Membuat sudut input lebih membulat
+      border-radius: 8px; // Membuat sudut input lebih membulat
       --background: #ffffff; // Latar belakang input
       --color: #000000;
+      border-color: #333333;
+      border-style: solid;
 
       ion-label {
         font-weight: bold;
