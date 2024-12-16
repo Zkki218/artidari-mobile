@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+  <div class="profile-container">
+    <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
+    <ion-button (click)="openEditProfileModal()" fill="clear">
+      <ion-icon name="create-outline"></ion-icon>
+     </ion-button>
+
+    <ion-item>
+      <ion-label>Username: {{ username }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Email: {{ email }}</ion-label>
+    </ion-item>
+
+    <ion-item class="description">
+      <ion-label>Description: {{ (userData$ | async)?.description }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Total Istilah: {{ istilahCount }}</ion-label>
+    </ion-item>
+
+    <ion-button expand="block" color="danger" (click)="logout()">Logout</ion-button>
+
+    
+  </div>
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your word"></ion-searchbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  
+
+  <div>
+
+    <ion-list *ngIf="(istilahList$ | async) as istilahList; else loading">
+      <ion-item-sliding *ngFor="let istilah of istilahList">
+        <ion-item-options side="start">
+          <ion-item-option color="success" (click)="openUpdateIstilahModal(istilah)">
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+  
+        <ion-item lines="full" (click)="openIstilahModal(istilah)">
+          <ion-label>
+            <h2>{{ istilah.judul }}</h2>
+            <p>Slide to open edit or delete option</p>
+          </ion-label>
+
+          <ion-button (click)="like(istilah)">
+            <ion-icon name="thumbs-up-outline"></ion-icon> {{ istilah.like }}
+          </ion-button>
+    
+          <ion-button (click)="dislike(istilah)">
+            <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah.dislike }}
+          </ion-button>
+    
+           <ion-button (click)="toggleBookmark(istilah)" >
+            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+  
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteIstilah(istilah)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ng-template>
+</ion-content>

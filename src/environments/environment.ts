@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDbmIKQU0a8-sUpnOYVPS8oh3MLw2sHuMw',
+
+    authDomain: 'artidari-mobile.firebaseapp.com',
+
+    projectId: 'artidari-mobile',
+
+    storageBucket: 'artidari-mobile.firebasestorage.app',
+
+    messagingSenderId: '481189780899',
+
+    appId: '1:481189780899:web:e18cb8f646424cac3d8e16',
+  },
 };
 
 /*

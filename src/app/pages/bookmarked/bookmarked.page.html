@@ -1,0 +1,46 @@
+<!-- bookmarked.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bookmarked</ion-title>
+  </ion-toolbar>
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your bookmark"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="(bookmarkedIstilah$ | async) as bookmarkedIstilah; else loading">
+    <ion-item *ngFor="let istilah of bookmarkedIstilah" lines="full">
+      <ion-label>
+        <h2>{{ istilah.judul }}</h2>
+        <p>{{ istilah.deskripsi }}</p>
+        <p>Contoh: {{ istilah.contoh }}</p>
+      </ion-label>
+
+      <ion-button (click)="like(istilah)">
+        <ion-icon name="thumbs-up-outline"></ion-icon> {{ istilah.like }}
+      </ion-button>
+
+      <ion-button (click)="dislike(istilah)">
+        <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah.dislike }}
+      </ion-button>
+
+      <ion-button (click)="toggleBookmark(istilah)">
+        <ion-icon [name]="isBookmarked(istilah) ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="openReportModal(istilah.id)">Report</ion-button>
+
+    </ion-item>
+  </ion-list>
+
+
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ng-template>
+
+
+</ion-content>

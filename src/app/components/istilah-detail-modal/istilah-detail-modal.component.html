@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ istilah?.judul }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-label>
+    <p>{{ istilah!.deskripsi }}</p>
+    <p>Contoh: {{ istilah!.contoh }}</p>
+  </ion-label>
+</ion-content>

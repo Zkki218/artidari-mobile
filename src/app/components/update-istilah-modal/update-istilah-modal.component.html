@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Istilah</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Judul</ion-label>
+    <ion-input [(ngModel)]="istilah.judul"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Deskripsi</ion-label>
+    <ion-textarea [(ngModel)]="istilah.deskripsi"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contoh</ion-label>
+    <ion-input [(ngModel)]="istilah.contoh"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="updateIstilah()">Update</ion-button>
+</ion-content>

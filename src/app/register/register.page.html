@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="register()" [formGroup]="credentials">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input placeholder="Name" formControlName="username"></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+      >
+        Username is required</ion-note
+      >
+      <!-- Added validation message -->
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+      >
+        Email is invalid</ion-note
+      >
+      <!-- Improved validation message -->
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+      >
+        Password must be at least 6 characters</ion-note
+      >
+      <!-- Improved validation message -->
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input
+        placeholder="Description"
+        formControlName="description"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+      >
+        Description is required</ion-note
+      >
+      <!-- Added validation message -->
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid"
+      >Register</ion-button
+    >
+  </form>
+
+  <ion-button (click)="goToLogin()" fill="clear" expand="block"
+    >Already Registered? Click Here!</ion-button
+  >
+  <!-- Added a login button for user convenience -->
+
+  <br /><ion-text><p style="text-align: center">Or</p></ion-text><br />
+  <ion-button expand="block" (click)="googleLogin()">
+    <ion-icon slot="start" name="logo-google"></ion-icon>
+    <ion-text>Signup with Google</ion-text>
+  </ion-button>
+</ion-content>

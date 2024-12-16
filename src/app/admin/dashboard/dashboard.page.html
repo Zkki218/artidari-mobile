@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Type some word or phrase"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="(istilahList$ | async) as istilahList; else loading">
+    <ion-item-sliding *ngFor="let istilah of istilahList">
+      <ion-item-options side="start">
+        <ion-item-option color="success" (click)="openUpdateIstilahModal(istilah)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item lines="full" (click)="openIstilahModal(istilah)">
+        <ion-label>
+          <h2>{{ istilah.judul }}</h2>
+          <p>Slide to open edit or delete option</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteIstilah(istilah)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ng-template>
+</ion-content>
