@@ -1,20 +1,73 @@
-.main {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+ion-header {
+    ion-toolbar {
+        --background: #1b274b; // Warna biru tua untuk header
+        --color: #ffffff; // Warna teks putih
+        text-align: center;
+        font-weight: bold;
+        font-family: "Work Sans", sans-serif;
+        height: 60px;
+    }
+}
+
+ion-content {
+    --ion-background-color: #f9f9f9; // Optional: background color for content
     display: flex;
-    height: 100%;
-    border: 1px solid black;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
-    .form {
-        height: 60%;
-        border-radius: 10% 10% 0 0;
-        padding-top: 35px;
-        margin-top: 285px;
-        border: 1px solid black;
-        position: absolute;
-
-        h1 {
-            font-weight: bold;
-            text-align: center;
-        }
+    ion-item {
+        margin-bottom: 1rem;
+        --background: #ffffff; // Latar belakang input
+        color: #1b274b;
+        border-radius: 5px; // Increased for more pronounced rounding 
+        border-color: #1b274b;
+        border-style: solid;
     }
+}
+
+
+.container {
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #1b274b;
+    text-align: center;
+}
+
+ion-button {
+    margin-top: 24px;
+}
+
+ion-button[fill="clear"] {
+    --color: #6b7280;
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translatey(0%);
+        opacity: 1;
+    }
+}
+
+/* Apply animation to the card */
+
+.container {
+    animation: slideInFromBottom 0.75s ease-in-out;
 }

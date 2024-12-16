@@ -21,7 +21,7 @@
         <ion-card-title>
           <h1 (click)="openIstilahModal(istilah)">{{ istilah?.judul }}</h1>
           <ion-button class="bookmark-button" fill="clear" (click)="toggleBookmark(istilah)">
-            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'" ></ion-icon>
           </ion-button>
           <ion-button class="report" fill="clear" (click)="openReportModal(istilah.id)"><ion-icon
               name="alert-circle"></ion-icon></ion-button>
