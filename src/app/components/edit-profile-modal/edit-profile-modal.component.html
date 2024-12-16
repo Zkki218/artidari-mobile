@@ -8,23 +8,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content lines="none">
   <div class="profile-container">
     <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input [(ngModel)]="username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="email" [disabled]="true"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea [(ngModel)]="description"></ion-textarea>
-    </ion-item>
-  </ion-list>
-  <ion-button expand="block" (click)="saveChanges()">Save Changes</ion-button>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="Username" [(ngModel)]="username">
+          <ion-icon slot="start" name="person" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="Email" [(ngModel)]="email" [disabled]="true">
+          <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea labelPlacement="stacked" label="Description" [(ngModel)]="description">
+          <ion-icon slot="start" name="pencil" aria-hidden="true"></ion-icon>
+        </ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" (click)="saveChanges()">Update</ion-button>
   </div>
 </ion-content>

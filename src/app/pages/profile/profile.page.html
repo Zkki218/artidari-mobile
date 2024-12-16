@@ -5,41 +5,40 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="profile-container">
-    <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
-    <ion-button (click)="openEditProfileModal()" fill="clear">
-      <ion-icon name="create-outline"></ion-icon>
-    </ion-button>
+  <ion-card class="profile-card">
+    <ion-card-header class="profile-header">
+      <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
+      <ion-button (click)="openEditProfileModal()" fill="clear">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-card-header>
 
-    <ion-item>
-      <ion-label>Username: {{ username }}</ion-label>
-    </ion-item>
+    <ion-card-content class="profile-info-section">
+      <p class="description">{{ username }}</p>
+      <p class="description2">{{ email }}</p>
+      <p class="description2">{{ (userData$ | async)?.description }}</p>
 
-    <ion-item>
-      <ion-label>Email: {{ email }}</ion-label>
-    </ion-item>
+      <hr>
 
-    <ion-item class="description">
-      <ion-label>Description: {{ (userData$ | async)?.description }}</ion-label>
-    </ion-item>
+      <p class="description2">Total Istilah</p>
+      <p class="description3">{{ istilahCount }}</p>
 
-    <ion-item>
-      <ion-label>Total Istilah: {{ istilahCount }}</ion-label>
-    </ion-item>
-
-    <ion-button expand="block" color="danger" (click)="logout()">Logout</ion-button>
+      <ion-button fill="clear" color="danger" (click)="logout()">
+        <ion-icon class="logout" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
 
 
-  </div>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your word"></ion-searchbar>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  </ion-card>
+
 
 
 
   <div>
-
+    <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your word"></ion-searchbar>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-list *ngIf="(istilahList$ | async) as istilahList; else loading">
       <ion-item-sliding *ngFor="let istilah of istilahList">
         <ion-item-options side="start">

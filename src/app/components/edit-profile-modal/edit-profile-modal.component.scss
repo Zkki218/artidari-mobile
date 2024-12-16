@@ -1,14 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; // Center content horizontally
-    margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Center content horizontally
+  margin: 20px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.profile-picture {
+  width: 100px; // Adjust size as needed
+  height: 100px;
+  border-radius: 50%; // Make it circular
+  margin-bottom: 20px; // Add some spacing
+  object-fit: cover; // Prevent image distortion
+}
+
+ion-content {
+  --ion-background-color: #f9f9f9; // Optional: background color for content
+  ion-list {
+    background-color: #f9f9f9;
+    border-color: #1b274b;
+    ion-item {
+      margin-bottom: 1rem;
+      --background: #ffffff; // Latar belakang input
+      --color: #000000;
+      --border-radius: 16px; // Increased for more pronounced rounding 
+      border-color: #1b274b;
+    }
   }
-  
-  .profile-picture {
-    width: 100px; // Adjust size as needed
-    height: 100px;
-    border-radius: 50%; // Make it circular
-    margin-bottom: 20px; // Add some spacing
-    object-fit: cover; // Prevent image distortion
-  }
+}
