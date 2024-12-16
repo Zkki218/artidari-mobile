@@ -86,6 +86,24 @@ export class FirestoreService {
     );
   }
 
+  getUserName(userId: string): Observable<string | null> {
+    const userDocRef = doc(this.firestore, `users/${userId}`);
+    return from(getDoc(userDocRef)).pipe(
+      map((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data() as UserData;
+          return userData.displayName || null; // Return display name or null if it doesn't exist
+        } else {
+          return null; // Return null if user document doesn't exist
+        }
+      }),
+      catchError((error) => {
+        console.error("Error getting user name:", error);
+        return of(null); // Return null in case of error
+      })
+    );
+  }
+
   updateUserDocument(
     userId: string,
     updatedData: Partial<UserData>
@@ -365,5 +383,13 @@ export class FirestoreService {
         });
       })
     );
+  }
+
+  timestampToDate(timestamp: Timestamp | undefined): Date | null {
+    if (timestamp) {
+      return timestamp.toDate();
+    } else {
+      return null; // Or handle the case where timestamp is null as needed
+    }
   }
 }
