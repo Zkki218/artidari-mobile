@@ -11,7 +11,9 @@ ion-header {
     background-color: #f9f9f9; // Warna latar belakang konten
   
     form {
-      padding: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
   
       ion-item {
         margin-bottom: 1rem;
@@ -24,9 +26,15 @@ ion-header {
           color: #333333;
         }
   
-        ion-input,
+        ion-input {
+            --padding-start: 8px;
+            overflow: scroll;
+        }
         ion-textarea {
-          --padding-start: 8px;
+            --padding-start: 8px;
+            height: 150px;
+            width: 300;
+            overflow: scroll;
         }
       }
   
