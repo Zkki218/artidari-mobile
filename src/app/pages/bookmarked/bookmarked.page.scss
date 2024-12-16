@@ -1,91 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 ion-header {
-    ion-toolbar {
-      --background: #1b274b; // Warna biru tua untuk header
-      --color: #ffffff; // Warna teks putih
-      text-align: center;
-      font-weight: bold;
-    }
-  }
-  
-  ion-content {
-    background-color: #f9f9f9; // Warna latar belakang konten
-  
-    form {
-      padding: 1rem;
-  
-      ion-item {
-        margin-bottom: 1rem;
-        --border-radius: 8px; // Membuat sudut input lebih membulat
-        --background: #ffffff; // Latar belakang input
-        --color: #000000;
-  
-        ion-label {
-          font-weight: bold;
-          color: #333333;
-        }
-  
-        ion-input,
-        ion-textarea {
-          --padding-start: 8px;
-        }
-      }
-  
-      ion-button {
-        --background: #1b274b; // Warna biru tua untuk tombol
-        --color: #ffffff; // Warna teks tombol
-        border-radius: 8px;
-        font-weight: bold;
-        text-transform: capitalize;
-  
-        &:disabled {
-          --background: #cccccc; // Warna abu-abu jika tombol disabled
-        }
-  
-        ion-icon {
-          margin-right: 8px; // Icon pada tombol submit
-        }
-      }
-  
-      // Style untuk bagian contoh penggunaan
-      .example-of-use {
-        margin-top: 1rem;
-        padding: 0.8rem;
-        border-radius: 8px;
-        background: #f1f5f9; // Latar abu muda
-        color: #333333;
-  
-        b {
-          font-weight: bold;
-          color: #1b274b;
-        }
-      }
-    }
-  }
-  
-  // Style untuk ikon navigasi footer
-  ion-footer {
-    ion-tab-bar {
-      --background: #ffffff;
-      border-top: 1px solid #dddddd;
-  
-      ion-tab-button {
-        color: #8c8c8c;
-  
-        &.tab-selected {
-          color: #1b274b; // Warna biru tua jika dipilih
-        }
-      }
-    }
-  }
-
-  h3 {
-    font-weight: lighter;
-    font-size: large;
-  }
-
-  h1 {
-    font-weight: lighter;
+  ion-toolbar {
+    --background: #1b274b; // Warna biru tua untuk header
+    --color: #ffffff; // Warna teks putih
     text-align: center;
-    margin-top: 30px;
+    font-weight: bold;
+    font-family: "Work Sans", sans-serif;
   }
-  
+}
+
+ion-content {
+  background-color: #f9f9f9; // Warna latar belakang konten
+  font-family: "Work Sans", sans-serif;
+
+  form {
+    padding: 1rem;
+
+    ion-item {
+      margin-bottom: 1rem;
+      --border-radius: 8px; // Membuat sudut input lebih membulat
+      --background: #ffffff; // Latar belakang input
+      --color: #000000;
+
+      ion-label {
+        font-weight: bold;
+        color: #333333;
+      }
+
+      ion-input,
+      ion-textarea {
+        --padding-start: 8px;
+      }
+    }
+
+    ion-button {
+      --background: #1b274b; // Warna biru tua untuk tombol
+      --color: #ffffff; // Warna teks tombol
+      border-radius: 8px;
+      font-weight: bold;
+      text-transform: capitalize;
+
+      &:disabled {
+        --background: #cccccc; // Warna abu-abu jika tombol disabled
+      }
+
+      ion-icon {
+        margin-right: 8px; // Icon pada tombol submit
+      }
+    }
+
+    // Style untuk bagian contoh penggunaan
+    .example-of-use {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 8px;
+      background: #f1f5f9; // Latar abu muda
+      color: #333333;
+
+      b {
+        font-weight: bold;
+        color: #1b274b;
+      }
+    }
+  }
+}
+
+// Style untuk ikon navigasi footer
+ion-footer {
+  ion-tab-bar {
+    --background: #ffffff;
+    border-top: 1px solid #dddddd;
+    font-family: "Work Sans", sans-serif;
+
+    ion-tab-button {
+      color: #8c8c8c;
+
+      &.tab-selected {
+        color: #1b274b; // Warna biru tua jika dipilih
+      }
+    }
+  }
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: large;
+  font-family: "Work Sans", sans-serif;
+}
+
+h1 {
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Work Sans", sans-serif;
+}
