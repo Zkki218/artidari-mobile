@@ -1,0 +1,28 @@
+ion-card {
+  background-color: white;
+  border-radius: 20px;
+}
+
+h1,
+span {
+  color: #1e2952;
+  font-weight: bold;
+}
+
+ion-card {
+  color: black;
+}
+
+h1 {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+ion-card-content.contoh {
+  text-align: center;
+  background-color: #1e2952;
+}
+
+ion-card-content.contoh p {
+  color: white;
+}

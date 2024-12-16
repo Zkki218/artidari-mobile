@@ -3,16 +3,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-submit',
   templateUrl: './submit.page.html',
   styleUrls: ['./submit.page.scss'],
 })
-export class SubmitPage {
+export class SubmitPage implements OnInit{
   userId = this.authService.getCurrentUserId();
-
+  userName: string | null = null;
   istilahForm: FormGroup;
+  authSubscription!: Subscription;
 
   constructor(
     private firestoreService: FirestoreService,
@@ -27,10 +29,24 @@ export class SubmitPage {
     });
   }
 
+  ngOnInit() {
+    this.authSubscription = this.authService.authStateChanges().subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+        this.firestoreService.getUserName(this.userId).subscribe(displayName => {
+          this.userName = displayName;
+        });
+      } else {
+        this.userId = null;
+        this.userName = null;
+      }
+    });
+  }
+
   submitIstilah() {
-    if (this.istilahForm.valid) {
+    if (this.istilahForm.valid && this.userId && this.userName) {
       this.firestoreService
-        .addIstilah(this.istilahForm.value, this.userId!)
+        .addIstilah(this.istilahForm.value, this.userId!, this.userName!)
         .then(() => {
           this.presentToast('Istilah berhasil ditambahkan');
           this.istilahForm.reset();

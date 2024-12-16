@@ -1,15 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ istilah?.judul }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">Close</ion-button>
-    </ion-buttons>
+    <ion-button slot="end" (click)="dismissModal()">Close</ion-button>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
-  <ion-label>
-    <p>{{ istilah!.deskripsi }}</p>
-    <p>Contoh: {{ istilah!.contoh }}</p>
-    <p>By: {{ userName }} at {{ date | date:'dd/MM/yyyy' }}</p>
-  </ion-label>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>{{ istilah?.judul }}</h1>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="name">
+      <p>{{ istilah!.deskripsi }}</p><br />
+      <p>By <span>{{ userName }}</span> at {{ date | date:'dd/MM/yyyy' }}</p><br />
+      <ion-icon name="thumbs-up-outline"></ion-icon> {{ istilah!.like }} <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah!.dislike }}
+    </ion-card-content>
+    <ion-card-content class="contoh">
+      <p>{{ istilah!.contoh }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

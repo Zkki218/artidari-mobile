@@ -7,7 +7,9 @@ import {
   updateProfile,
   AuthError,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  onAuthStateChanged,
+  User
 } from '@angular/fire/auth';
 import { BehaviorSubject, from, Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
@@ -32,6 +34,15 @@ export class AuthService {
 
   getCurrentUserId(): string | null {
     return this.auth.currentUser ? this.auth.currentUser.uid : null;
+  }
+
+  authStateChanges(): Observable<User | null> {
+    return new Observable(subscriber => {
+      const unsubscribe = onAuthStateChanged(this.auth, (user) => {
+        subscriber.next(user);
+      });
+      return unsubscribe; // Important to return the unsubscribe function
+    });
   }
 
   // Create a user and send verification email.

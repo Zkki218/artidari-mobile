@@ -23,6 +23,8 @@ export class HomePage implements OnInit {
   istilahList$: Observable<Istilah[]> | undefined;
   searchQuery: string = '';
   userId: string | undefined;
+  userName: string | null = null;
+  date: Date | null = null;
   userBookmarks$: BehaviorSubject<Bookmark[]> = new BehaviorSubject<Bookmark[]>([]);
 
 
@@ -120,5 +122,9 @@ export class HomePage implements OnInit {
 
   isBookmarked(istilah: Istilah): boolean {
     return this.userBookmarks$.value.some(bookmark => bookmark.istilahId === istilah.id);
+  }
+
+  timestampToDate(timestamp: any) {
+    return this.firestoreService.timestampToDate(timestamp);
   }
 }

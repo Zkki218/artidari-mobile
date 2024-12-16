@@ -44,6 +44,7 @@ export interface Istilah {
   updatedAt: Timestamp; // Firebase Timestamp
   isBookmarked?: boolean;
   userId: string;
+  userName: string;
 }
 
 export interface Report {
@@ -118,7 +119,7 @@ export class FirestoreService {
   }
 
   // Add Istilah
-  addIstilah(istilah: Istilah, userId: string): Promise<any> {
+  addIstilah(istilah: Istilah, userId: string, userName: string): Promise<any> {
     const istilahRef = collection(this.firestore, 'istilah');
     return addDoc(istilahRef, {
       ...istilah,
@@ -127,6 +128,7 @@ export class FirestoreService {
       like: 0,
       dislike: 0,
       userId: userId,
+      userName: userName,
     });
   }
 

@@ -154,7 +154,7 @@ export class ProfilePage implements OnInit {
   async openUpdateIstilahModal(istilah: Istilah) {
       const modal = await this.modalController.create({
         component: UpdateIstilahModalComponent,
-        componentProps: { istilah: { ...istilah } }, // Pass a copy of the istilah
+        componentProps: { istilah: { ...istilah } },
       });
   
       await modal.present();
