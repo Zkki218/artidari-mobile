@@ -32,23 +32,24 @@
               [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"
             ></ion-icon>
           </ion-button>
-          <ion-button class="report" fill="clear" (click)="openReportModal(istilah.id)"
+          <ion-button
+            class="report"
+            fill="clear"
+            (click)="openReportModal(istilah.id)"
             ><ion-icon name="alert-circle"></ion-icon
           ></ion-button>
         </ion-card-title>
       </ion-card-header>
       <ion-card-content class="name">
         <p (click)="openIstilahModal(istilah)">Tap to see istilah</p>
-        
-        
-          <ion-button class="like" fill="clear" (click)="like(istilah)">
-            <ion-icon name="thumbs-up"></ion-icon> {{ istilah.like }}
-          </ion-button>
 
-          <ion-button class="dislike" fill="clear" (click)="dislike(istilah)">
-            <ion-icon name="thumbs-down"></ion-icon> {{ istilah.dislike }}
-          </ion-button>
-        
+        <ion-button class="like" fill="clear" (click)="like(istilah)">
+          <ion-icon name="thumbs-up"></ion-icon> {{ istilah.like }}
+        </ion-button>
+
+        <ion-button class="dislike" fill="clear" (click)="dislike(istilah)">
+          <ion-icon name="thumbs-down"></ion-icon> {{ istilah.dislike }}
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </ion-list>

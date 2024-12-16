@@ -85,20 +85,26 @@ export class ProfilePage implements OnInit {
   }
 
   async loadIstilah(event?: any) {
+    if (!this.userId) {
+      this.istilahList$ = of([]);
+      return;
+    }
+  
     this.istilahList$ = combineLatest([
-      this.firestoreService.getUserIstilah(this.userId!, this.searchQuery),
-      this.userBookmarks$,
+      this.firestoreService.getUserIstilah(this.userId, this.searchQuery),
+      this.firestoreService.getUserBookmarks(this.userId)
     ]).pipe(
       map(([istilahList, bookmarks]) => {
-        this.istilahCount = istilahList.length;
-        return istilahList.map((istilah) => {
-          const isBookmarked = bookmarks.some(
-            (bookmark) => bookmark.istilahId === istilah.id
-          );
+        return istilahList.map(istilah => {
+          const isBookmarked = bookmarks.some(bookmark => bookmark.istilahId === istilah.id);
           return { ...istilah, isBookmarked };
         });
       })
     );
+  
+    if (event) {
+      event.target.complete();
+    }
   }
 
   async openEditProfileModal() {
@@ -202,20 +208,16 @@ export class ProfilePage implements OnInit {
       await alert.present();
     }
 
-  toggleBookmark(istilah: Istilah) {
-    if (this.userId) {
-      this.firestoreService.toggleBookmark(istilah.id, this.userId).then(() => {
-        // Update the local bookmarks after successful toggle
-        this.firestoreService
-          .getUserBookmarks(this.userId!)
-          .subscribe((bookmarks) => {
-            this.userBookmarks$.next(bookmarks);
-          });
-      });
-    } else {
-      console.error('User not logged in');
+    toggleBookmark(istilah: Istilah) {
+      if (this.userId) {
+        this.firestoreService.toggleBookmark(istilah.id, this.userId).then(() => {
+          // Directly reload the istilah list
+          this.loadIstilah(); // or this.loadBookmark() for bookmarked page
+        });
+      } else {
+        console.error('User not logged in');
+      }
     }
-  }
 
   like(istilah: Istilah) {
     if (this.userId) {

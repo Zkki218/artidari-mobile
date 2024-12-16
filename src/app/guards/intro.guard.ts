@@ -22,7 +22,7 @@ export class introGuard implements CanActivate {
   ): Promise<boolean | UrlTree> {
     const hasSeenIntro = await this.StorageService.get(INTRO_KEY);
     if (hasSeenIntro && (hasSeenIntro === 'true')) {
-      const redirectUrl = localStorage.getItem('redirectUrl') || '/home'; // Get the original URL or default to /home
+      const redirectUrl = localStorage.getItem('redirectUrl') || '/'; // Get the original URL or default to /home
       localStorage.removeItem('redirectUrl'); // Clear the stored URL
       return this.router.parseUrl(redirectUrl); // Redirect to the original or default URL
     } else {

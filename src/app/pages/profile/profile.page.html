@@ -50,24 +50,33 @@
           </ion-item-option>
         </ion-item-options>
 
-        <ion-item lines="full">
-          <ion-label  (click)="openIstilahModal(istilah)">
-            <h2>{{ istilah.judul }}</h2>
-            <p>Slide to open edit or delete option</p>
-          </ion-label>
-
-          <ion-button (click)="like(istilah)">
-            <ion-icon name="thumbs-up-outline"></ion-icon> {{ istilah.like }}
-          </ion-button>
-
-          <ion-button (click)="dislike(istilah)">
-            <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah.dislike }}
-          </ion-button>
-
-          <ion-button (click)="toggleBookmark(istilah)">
-            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
-          </ion-button>
-        </ion-item>
+        <ion-card lines="full">
+          <ion-card-header>
+            <ion-card-title>
+              <h1 (click)="openIstilahModal(istilah)">{{ istilah?.judul }}</h1>
+              <ion-button
+                class="bookmark-button"
+                fill="clear"
+                (click)="toggleBookmark(istilah)"
+              >
+                <ion-icon
+                  [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"
+                ></ion-icon>
+              </ion-button>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="name">
+            <p (click)="openIstilahModal(istilah)">Tap to see istilah</p>
+    
+            <ion-button class="like" fill="clear" (click)="like(istilah)">
+              <ion-icon name="thumbs-up"></ion-icon> {{ istilah.like }}
+            </ion-button>
+    
+            <ion-button class="dislike" fill="clear" (click)="dislike(istilah)">
+              <ion-icon name="thumbs-down"></ion-icon> {{ istilah.dislike }}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
 
         <ion-item-options side="end">
           <ion-item-option color="danger" (click)="deleteIstilah(istilah)">
