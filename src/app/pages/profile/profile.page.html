@@ -17,18 +17,21 @@
       <p class="description">{{ username }}</p>
       <p class="description2">{{ email }}</p>
       <p class="description2">{{ (userData$ | async)?.description }}</p>
-
+  
       <hr>
-
+  
       <p class="description2">Total Istilah</p>
-      <p class="description3">{{ istilahCount }}</p>
-
-      <ion-button fill="clear" color="danger" (click)="logout()">
-        <ion-icon class="logout" name="log-out-outline"></ion-icon>
-      </ion-button>
+      <div class="flex-container">
+        <div class="center-element">
+          <p class="description3">{{ istilahCount }}</p>
+        </div>
+        <div class="right-element">
+          <ion-button fill="clear" color="danger" (click)="logout()">
+            <ion-icon class="logout" name="log-out-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
     </ion-card-content>
-
-
   </ion-card>
 
 

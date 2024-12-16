@@ -75,5 +75,21 @@ hr {
 }
 
 .logout{
-  font-size: 30px;
+  font-size: 25px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;         
+  position: relative;          
+}
+
+.center-element {
+  position: absolute;          
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+.right-element {
+  margin-left: 250px;
 }
