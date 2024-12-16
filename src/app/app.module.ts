@@ -16,7 +16,8 @@ import {IonicStorageModule} from '@ionic/storage-angular';
 import {StorageService} from 'src/app/services/storage.service';
 
 import { ReportModalModule } from './components/report-modal/report-modal.module';
-import { IstilahDetailModalModule } from './components/istilah-detail-modal/istilah-detail-modal.module';
+import { IstilahDetailUserModalModule } from './components/istilah-detail-user-modal/istilah-detail-user-modal.module';
+import { IstilahDetailAdminModalModule } from './components/istilah-detail-admin-modal/istilah-detail-admin.modal.module';
 import { EditProfileModalModule } from './components/edit-profile-modal/edit-profile-modal.module';
 import { UpdateIstilahModalModule } from './components/update-istilah-modal/update-istilah-modal.module';
 
@@ -28,7 +29,8 @@ import { UpdateIstilahModalModule } from './components/update-istilah-modal/upda
     IonicModule.forRoot(), 
     AppRoutingModule,
     ReportModalModule,
-    IstilahDetailModalModule,
+    IstilahDetailUserModalModule,
+    IstilahDetailAdminModalModule,
     EditProfileModalModule,
     UpdateIstilahModalModule,
     IonicStorageModule.forRoot({name: '__mydb', driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]})

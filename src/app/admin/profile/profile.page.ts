@@ -10,7 +10,7 @@ import {
   of,
 } from 'rxjs';
 import { EditProfileModalComponent } from 'src/app/components/edit-profile-modal/edit-profile-modal.component';
-import { IstilahDetailModalComponent } from 'src/app/components/istilah-detail-modal/istilah-detail-modal.component';
+import { IstilahDetailAdminModalComponent } from 'src/app/components/istilah-detail-admin-modal/istilah-detail-admin-modal.component';
 import { AuthService } from 'src/app/services/auth.service';
 import {
   Bookmark,
@@ -144,7 +144,7 @@ export class ProfilePage implements OnInit {
 
   async openIstilahModal(istilah: Istilah) {
     const modal = await this.modalController.create({
-      component: IstilahDetailModalComponent,
+      component: IstilahDetailAdminModalComponent,
       componentProps: { istilah: istilah }, // Pass the istilah data
     });
     return await modal.present();

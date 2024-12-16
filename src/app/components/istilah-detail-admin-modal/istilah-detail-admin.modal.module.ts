@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { IstilahDetailModalComponent } from './istilah-detail-modal.component';
+import { IstilahDetailAdminModalComponent } from './istilah-detail-admin-modal.component';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import { IstilahDetailModalComponent } from './istilah-detail-modal.component';
     FormsModule,
     IonicModule
   ],
-  declarations: [IstilahDetailModalComponent],
-  exports: [IstilahDetailModalComponent]
+  declarations: [IstilahDetailAdminModalComponent],
+  exports: [IstilahDetailAdminModalComponent]
 })
-export class IstilahDetailModalModule {}
+export class IstilahDetailAdminModalModule {}

@@ -2,6 +2,13 @@
   <ion-toolbar color="primary">
     <ion-title>Profile</ion-title>
   </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="profile-container">
     <img [src]="profileImageUrl" alt="Profile Picture" class="profile-picture">
     <ion-button (click)="openEditProfileModal()" fill="clear">
@@ -27,14 +34,6 @@
     <ion-button expand="block" color="danger" (click)="logout()">Logout</ion-button>
   </div>
   <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Search your word"></ion-searchbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-
-  
 
   <div>
 

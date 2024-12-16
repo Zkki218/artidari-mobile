@@ -12,6 +12,7 @@ import {
 import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
 import { ReportModalComponent } from 'src/app/components/report-modal/report-modal.component';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { IstilahDetailUserModalComponent } from 'src/app/components/istilah-detail-user-modal/istilah-detail-user-modal.component';
 
 
 @Component({
@@ -54,18 +55,26 @@ export class HomePage implements OnInit {
   }
 
   async loadIstilah(event?: any) {
-
+    if (!this.userId) {
+      this.istilahList$ = of([]);
+      return;
+    }
+  
     this.istilahList$ = combineLatest([
       this.firestoreService.getIstilahList(this.searchQuery),
-      this.userBookmarks$
+      this.firestoreService.getUserBookmarks(this.userId)
     ]).pipe(
       map(([istilahList, bookmarks]) => {
         return istilahList.map(istilah => {
           const isBookmarked = bookmarks.some(bookmark => bookmark.istilahId === istilah.id);
           return { ...istilah, isBookmarked };
         });
-      }),
+      })
     );
+  
+    if (event) {
+      event.target.complete();
+    }
   }
 
   doRefresh(event: any) {
@@ -90,10 +99,8 @@ export class HomePage implements OnInit {
   toggleBookmark(istilah: Istilah) {
     if (this.userId) {
       this.firestoreService.toggleBookmark(istilah.id, this.userId).then(() => {
-        // Update the local bookmarks after successful toggle
-        this.firestoreService.getUserBookmarks(this.userId!).subscribe((bookmarks) => {
-          this.userBookmarks$.next(bookmarks);
-        });
+        // Directly reload the istilah list
+        this.loadIstilah(); // or this.loadBookmark() for bookmarked page
       });
     } else {
       console.error('User not logged in');
@@ -127,4 +134,12 @@ export class HomePage implements OnInit {
   timestampToDate(timestamp: any) {
     return this.firestoreService.timestampToDate(timestamp);
   }
+
+  async openIstilahModal(istilah: Istilah) {
+      const modal = await this.modalController.create({
+        component: IstilahDetailUserModalComponent,
+        componentProps: { istilah: istilah }, // Pass the istilah data
+      });
+      return await modal.present();
+    }
 }

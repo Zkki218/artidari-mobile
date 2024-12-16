@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <img src="./assets/artidari.png" alt="artidari.icon" style="height: 40px;  margin-top: 10px;">
+    <img
+      src="./assets/artidari.png"
+      alt="artidari.icon"
+      style="height: 40px; margin-top: 10px"
+    />
   </ion-toolbar>
-  <ion-searchbar (ionChange)="onSearch($event)" animated placeholder="Type some word or phrase"></ion-searchbar>
+  <ion-searchbar
+    (ionChange)="onSearch($event)"
+    animated
+    placeholder="Type some word or phrase"
+  ></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -14,28 +22,33 @@
     <ion-card *ngFor="let istilah of istilahList" lines="full">
       <ion-card-header>
         <ion-card-title>
-          <h1>{{ istilah?.judul }}</h1> <ion-button (click)="toggleBookmark(istilah)" >
-            <ion-icon [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+          <h1 (click)="openIstilahModal(istilah)">{{ istilah?.judul }}</h1>
+          <ion-button
+            class="bookmark-button"
+            fill="clear"
+            (click)="toggleBookmark(istilah)"
+          >
+            <ion-icon
+              [name]="istilah.isBookmarked ? 'bookmark' : 'bookmark-outline'"
+            ></ion-icon>
           </ion-button>
-          
+          <ion-button class="report" fill="clear" (click)="openReportModal(istilah.id)"
+            ><ion-icon name="alert-circle"></ion-icon
+          ></ion-button>
         </ion-card-title>
-        
       </ion-card-header>
       <ion-card-content class="name">
-        <p>{{ istilah!.deskripsi }}</p><br />
-        <p>By <span>{{ istilah!.userName }}</span> at {{ timestampToDate(istilah!.updatedAt) | date:'dd/MM/yyyy' }}</p><br />
-        <ion-button (click)="like(istilah)">
-          <ion-icon name="thumbs-up-outline"></ion-icon> {{ istilah.like }}
-        </ion-button>
-  
-        <ion-button (click)="dislike(istilah)">
-          <ion-icon name="thumbs-down-outline"></ion-icon> {{ istilah.dislike }}
-        </ion-button>
-  
-        <ion-button (click)="openReportModal(istilah.id)">Report</ion-button>
-      </ion-card-content>
-      <ion-card-content class="contoh">
-        <p>{{ istilah!.contoh }}</p>
+        <p (click)="openIstilahModal(istilah)">Tap to see istilah</p>
+        
+        
+          <ion-button class="like" fill="clear" (click)="like(istilah)">
+            <ion-icon name="thumbs-up"></ion-icon> {{ istilah.like }}
+          </ion-button>
+
+          <ion-button class="dislike" fill="clear" (click)="dislike(istilah)">
+            <ion-icon name="thumbs-down"></ion-icon> {{ istilah.dislike }}
+          </ion-button>
+        
       </ion-card-content>
     </ion-card>
   </ion-list>

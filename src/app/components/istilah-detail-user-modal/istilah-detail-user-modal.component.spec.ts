@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { IstilahDetailModalComponent } from './istilah-detail-modal.component';
+import { IstilahDetailUserModalComponent } from './istilah-detail-user-modal.component';
 
 describe('IstilahDetailComponent', () => {
-  let component: IstilahDetailModalComponent;
-  let fixture: ComponentFixture<IstilahDetailModalComponent>;
+  let component: IstilahDetailUserModalComponent;
+  let fixture: ComponentFixture<IstilahDetailUserModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ IstilahDetailModalComponent ],
+      declarations: [ IstilahDetailUserModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IstilahDetailModalComponent);
+    fixture = TestBed.createComponent(IstilahDetailUserModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

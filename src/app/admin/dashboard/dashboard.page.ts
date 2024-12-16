@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BehaviorSubject, combineLatest, map, Observable, of } from 'rxjs';
-import { IstilahDetailModalComponent } from 'src/app/components/istilah-detail-modal/istilah-detail-modal.component';
+import { IstilahDetailAdminModalComponent } from 'src/app/components/istilah-detail-admin-modal/istilah-detail-admin-modal.component';
 import { UpdateIstilahModalComponent } from 'src/app/components/update-istilah-modal/update-istilah-modal.component';
 import { AuthService } from 'src/app/services/auth.service';
 import {
@@ -152,7 +152,7 @@ export class DashboardPage implements OnInit {
 
   async openIstilahModal(istilah: Istilah) {
     const modal = await this.modalController.create({
-      component: IstilahDetailModalComponent,
+      component: IstilahDetailAdminModalComponent,
       componentProps: { istilah: istilah }, // Pass the istilah data
     });
     return await modal.present();

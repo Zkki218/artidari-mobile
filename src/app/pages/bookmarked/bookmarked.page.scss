@@ -90,7 +90,7 @@ h3 {
   font-family: "Work Sans", sans-serif;
 }
 
-h1 {
+h1.title {
   font-weight: lighter;
   text-align: center;
   margin-top: 30px;
@@ -100,4 +100,68 @@ h1 {
 ion-searchbar {
   --background: #ffffff;
   --color: #1b274b;
+}
+
+ion-card {
+  background-color: white;
+  border-radius: 20px;
+}
+
+ion-card-title {
+  display: flex;
+}
+
+.bookmark-button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.report{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.name {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  p {
+    align-self: center;
+  }
+
+  ion-button.like {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  ion-button.dislike {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+h1,
+span {
+  color: #1e2952;
+  font-weight: bold;
+}
+
+ion-card {
+  color: black;
+}
+
+h1 {
+  padding-top: 0;
+  margin-top: 0;
+  align-self: center;
+}
+
+ion-card-content.contoh {
+  text-align: center;
+  background-color: #1e2952;
+}
+
+ion-card-content.contoh p {
+  color: white;
 }

@@ -16,7 +16,7 @@ import {
   UserData,
 } from 'src/app/services/firestore.service';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
-import { IstilahDetailModalComponent } from 'src/app/components/istilah-detail-modal/istilah-detail-modal.component';
+import { IstilahDetailUserModalComponent } from 'src/app/components/istilah-detail-user-modal/istilah-detail-user-modal.component';
 import { EditProfileModalComponent } from 'src/app/components/edit-profile-modal/edit-profile-modal.component';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UpdateIstilahModalComponent } from 'src/app/components/update-istilah-modal/update-istilah-modal.component';
@@ -241,7 +241,7 @@ export class ProfilePage implements OnInit {
 
   async openIstilahModal(istilah: Istilah) {
     const modal = await this.modalController.create({
-      component: IstilahDetailModalComponent,
+      component: IstilahDetailUserModalComponent,
       componentProps: { istilah: istilah }, // Pass the istilah data
     });
     return await modal.present();

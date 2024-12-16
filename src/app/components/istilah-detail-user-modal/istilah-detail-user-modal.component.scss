@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+ion-header {
+  font-family: "Work Sans", sans-serif;
+}
+
+ion-card {
+  background-color: white;
+  border-radius: 20px;
+}
+
+ion-card-title {
+  display: flex;
+}
+
+.bookmark-button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .report{
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+h1,
+span {
+  color: #1e2952;
+  font-weight: bold;
+}
+
+ion-card {
+  color: black;
+}
+
+h1 {
+  padding-top: 0;
+  margin-top: 0;
+  width: fit-content;
+}
+
+ion-card-content.contoh {
+  text-align: center;
+  background-color: #1e2952;
+}
+
+ion-card-content.contoh p {
+  color: white;
+}
