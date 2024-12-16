@@ -99,7 +99,7 @@ h1.contribute {
   font-family: "Work Sans", sans-serif;
 }
 
-ion-card {
+ion-card.istilah {
   background-color: white;
   border-radius: 20px;
 }
@@ -144,10 +144,6 @@ span {
   font-weight: bold;
 }
 
-ion-card {
-  color: black;
-}
-
 h1 {
   padding-top: 0;
   margin-top: 0;
@@ -184,4 +180,22 @@ ion-searchbar {
 /* Apply animation to the card */
 ion-card {
   animation: slideInFromRight 0.75s ease-in-out;
+}
+
+/* CARD FOR CONTRIBUTE */
+.community-card {
+  position: relative;
+  height: auto; /* Adjust height as needed */
+  width: auto;;
+  border-radius: 20px; /* Rounded corners */
+  margin: 0; /* Remove any default margin */
+  padding: 5px; 
+  overflow: hidden; /* Ensure no content overflows */
+  box-shadow: none; /* Optional: remove shadow */
+}
+
+.community-card img {
+  width: 100%; /* Ensure the image fills the card width */
+  height: 100%; /* Ensure the image fills the card height */
+  object-fit: cover; /* Crop the image to fit without distortion */
 }

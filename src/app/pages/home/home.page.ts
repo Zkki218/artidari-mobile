@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
     private router: Router,
     private firestoreService: FirestoreService,
     private modalController: ModalController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.authService.user$.subscribe((user) => { // Use switchMap to cancel previous inner subscriptions.
@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
         });
 
       } else {
-        this.userId = undefined; 
+        this.userId = undefined;
         this.userBookmarks$.next([]); // Clear bookmarks on logout
         this.istilahList$ = of([]); // Clear the istilah list when logged out
       }
@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
       this.istilahList$ = of([]);
       return;
     }
-  
+
     this.istilahList$ = combineLatest([
       this.firestoreService.getIstilahList(this.searchQuery),
       this.firestoreService.getUserBookmarks(this.userId)
@@ -71,7 +71,7 @@ export class HomePage implements OnInit {
         });
       })
     );
-  
+
     if (event) {
       event.target.complete();
     }
@@ -108,7 +108,7 @@ export class HomePage implements OnInit {
   }
 
   like(istilah: Istilah) {
-    if(this.userId) {
+    if (this.userId) {
       this.firestoreService.likeIstilah(istilah.id, this.userId);
 
     } else {
@@ -118,7 +118,7 @@ export class HomePage implements OnInit {
   }
 
   dislike(istilah: Istilah) {
-    if(this.userId) {
+    if (this.userId) {
       this.firestoreService.dislikeIstilah(istilah.id, this.userId);
 
     } else {
@@ -136,10 +136,14 @@ export class HomePage implements OnInit {
   }
 
   async openIstilahModal(istilah: Istilah) {
-      const modal = await this.modalController.create({
-        component: IstilahDetailUserModalComponent,
-        componentProps: { istilah: istilah }, // Pass the istilah data
-      });
-      return await modal.present();
-    }
+    const modal = await this.modalController.create({
+      component: IstilahDetailUserModalComponent,
+      componentProps: { istilah: istilah }, // Pass the istilah data
+    });
+    return await modal.present();
+  }
+
+  goToSubmitPage() {
+    this.router.navigate(['tabs/submit']); // Replace '/submit' with the actual route of your submit page
+  }
 }
