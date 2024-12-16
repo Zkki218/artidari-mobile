@@ -12,7 +12,7 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs/home']);
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tabs/home', // Redirect to home if logged in
+    redirectTo: 'intro',
     pathMatch: 'full'
   },
   {

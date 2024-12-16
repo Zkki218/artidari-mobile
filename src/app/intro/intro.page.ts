@@ -35,8 +35,14 @@ export class IntroPage {
     console.log('changed: ', e);
   }
 
-  async start() {
+  async startLogin() {
 		await this.storage.set(INTRO_KEY, 'true');
+    this.router.navigateByUrl('/login');
+	}
+
+  async startRegister() {
+		await this.storage.set(INTRO_KEY, 'true');
+    this.router.navigateByUrl('/register');
 	}
 
 }

@@ -8,8 +8,33 @@ swiper-slide {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
 
-// ion-content {
-//   --background: white;
-// }
+  .main {
+    background-color: #1E2952;
+    height: 50%;
+    padding: 20px;
+    align-self: flex-end;
+
+    h1 {
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    p {
+      color: white;
+    }
+
+    ion-button {
+      float: right;
+      --background: white;
+      --color: black;
+    }
+
+    ion-button.register {
+      float: right;
+      --background: black;
+      --color: white;
+    }
+  }
+}
