@@ -4,9 +4,31 @@ ion-header {
   ion-toolbar {
     font-weight: bold;
     font-family: "Work Sans", sans-serif;
+    color: #1b274b;
   }
 }
 
 ion-content {
   font-family: "Work Sans", sans-serif;
+  color: #1b274b;
+}
+
+ion-button.submit {
+  --background: #1b274b; // Warna biru tua untuk tombol
+  --color: #ffffff; // Warna teks tombol
+  border-radius: 8px;
+  font-weight: bold;
+  width: 200px;
+  height: 25px;
+  font-size: 16px;
+
+  &:disabled {
+    --background: #cccccc; // Warna abu-abu jika tombol disabled
+  }
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
