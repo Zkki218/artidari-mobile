@@ -45,7 +45,7 @@ export class RegisterPage implements OnInit {
       username: ['', [Validators.required]], // Added username validator
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      description: ['', [Validators.required, Validators.maxLength(25)]]
+      description: ['', [Validators.required, Validators.maxLength(250)]]
     });
   }
 
