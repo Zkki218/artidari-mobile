@@ -95,6 +95,7 @@ export class ProfilePage implements OnInit {
       this.firestoreService.getUserBookmarks(this.userId)
     ]).pipe(
       map(([istilahList, bookmarks]) => {
+        this.istilahCount = istilahList.length;
         return istilahList.map(istilah => {
           const isBookmarked = bookmarks.some(bookmark => bookmark.istilahId === istilah.id);
           return { ...istilah, isBookmarked };

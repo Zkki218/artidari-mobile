@@ -152,3 +152,21 @@ ion-card-content.contoh {
 ion-card-content.contoh p {
   color: white;
 }
+
+/* Animation for entering from below */
+@keyframes slideInFromRight {
+  0% {
+    transform: translatex(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to the card */
+ion-card {
+  animation: slideInFromRight 0.75s ease-in-out;
+}

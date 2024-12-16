@@ -116,3 +116,21 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
+/* Animation for entering from below */
+@keyframes slideInFromRight {
+  0% {
+    transform: translatex(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to the card */
+ion-content {
+  animation: slideInFromRight 0.75s ease-in-out;
+}
