@@ -49,7 +49,9 @@ ion-content {
       border-radius: 8px;
       font-weight: bold;
       text-transform: capitalize;
-      width: 150px;
+      width: 200px;
+      height: 45px;
+      font-size: 16px;
 
       &:disabled {
         --background: #cccccc; // Warna abu-abu jika tombol disabled
